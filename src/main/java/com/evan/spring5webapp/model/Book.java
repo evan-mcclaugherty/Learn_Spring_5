@@ -7,7 +7,8 @@ import java.util.Set;
 public class Book {
     private String title;
     private String isbn;
-    private String publisher;
+    @OneToOne
+    private Publisher publisher;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long Id;
@@ -16,7 +17,7 @@ public class Book {
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
-    public Book(String title, String isbn, String publisher) {
+    public Book(String title, String isbn, Publisher publisher) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
@@ -25,7 +26,7 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String isbn, String publisher, Set<Author> authors) {
+    public Book(String title, String isbn, Publisher publisher, Set<Author> authors) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
@@ -56,11 +57,11 @@ public class Book {
         this.isbn = isbn;
     }
 
-    public String getPublisher() {
+    public Publisher getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(String publisher) {
+    public void setPublisher(Publisher publisher) {
         this.publisher = publisher;
     }
 
@@ -92,7 +93,7 @@ public class Book {
         final StringBuffer sb = new StringBuffer("Book{");
         sb.append("title='").append(title).append('\'');
         sb.append(", isbn='").append(isbn).append('\'');
-        sb.append(", publisher='").append(publisher).append('\'');
+        sb.append(", publisher=").append(publisher);
         sb.append(", Id=").append(Id);
         sb.append(", authors=").append(authors);
         sb.append('}');
