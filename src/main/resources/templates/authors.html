@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Learning Spring 5</title>
 </head>
 <body>
     <h1>Author List</h1>
     <table>
         <tr>
-            <th>Name</th>
+            <th>ID</th>
+            <th>First</th>
+            <th>Last</th>
         </tr>
         <tr th:each="author : ${authors}">
-            <td th:text="${author.firstName} ${author.lastName}">Evan McClaugherty</td>
+            <td th:text="${author.id}">123</td>
+            <td th:text="${author.firstName}">Evan</td>
+            <td th:text="${author.lastName}">McClaugherty</td>
         </tr>
     </table>
 </body>
